@@ -61,12 +61,12 @@ function Navbar() {
 
     return (
         <>
-        <IconContext.Provider value={{ color: '#fff' }}>
+        <IconContext.Provider value={{ color: '#111' }}>
             <Nav>
                 <NavbarContainer>
                     <NavLogo to='/'> 
                         <NavIcon />
-                            ULTRA
+                            ALL DAY VENTURES
                     </NavLogo>
                     <HamburgerIcon onClick={handleClick}>
                         {click ? <FaTimes /> : <FaBars />}

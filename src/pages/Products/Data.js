@@ -1,57 +1,59 @@
 export const homeObjOne = {
-    lightBg: false,
-    lightText: true,
-    lightTopLine: true,
-    lightTextDesc: true,
-    topLine: 'View Our Products',
-    headline: 'Shop through our catalog of products',
-    description:
-      'We provide worldwide shipping to all countries. If there are any issues, just issue a refund and we will process your request',
-    buttonLabel: 'Shop Now',
-    imgStart: '',
-    img: require('../../images/svg-1.svg'),
-    alt: 'Credit Card'
-  };
-  
-  export const homeObjTwo = {
-    lightBg: true,
-    lightText: false,
-    lightTopLine: false,
-    lightTextDesc: false,
-    topLine: '100% Secure',
-    headline: 'Stay protected 24/7 anywhere anytime',
-    description:
-      'We have you covered no matter where you are located. Over 140 locations worldwide to ensure you have access anytime',
-    buttonLabel: 'Learn More',
-    imgStart: 'start',
-    img: require('../../images/svg-2.svg'),
-    alt: 'Vault'
-  };
-  
-  export const homeObjThree = {
-    lightBg: true,
-    lightText: false,
-    lightTextDesc: false,
-    topLine: 'Easy Setup',
-    headline: 'Super fast and simple onboarding process',
-    description:
-      "Get everything set up and ready in under 10 minutes. All you need to do is add your information and you're ready to go.",
-    buttonLabel: 'Start Now',
-    imgStart: 'start',
-    img: require('../../images/svg-1.svg'),
-    alt: 'Vault'
-  };
-  
-  export const homeObjFour = {
-    lightBg: false,
-    lightText: true,
-    lightTextDesc: true,
-    topLine: 'DATA ANALYTICS',
-    headline: 'Every transaction is stored on our secure cloud database',
-    description:
-      'Never ever have to worry again about saved reciepts. We store your data, so you can access it anytime.',
-    buttonLabel: 'Sign Up Now',
-    imgStart: 'start',
-    img: require('../../images/svg-1.svg'),
-    alt: 'Vault'
-  };
+  lightBg: false,
+  lightText: true,
+  lightTopLine: true,
+  lightTextDesc: true,
+  topLine: 'Our Solutions',
+  headline: 'Innovative solutions across key industries',
+  description:
+    'We deliver impactful solutions in agriculture, technology, infrastructure, and services designed to drive growth and create sustainable employment.',
+  buttonLabel: 'Explore More',
+  imgStart: '',
+  img: require('../../images/solutions.jpg'),
+  alt: 'Solutions'
+};
+
+export const homeObjTwo = {
+  lightBg: true,
+  lightText: false,
+  lightTopLine: true,
+  lightTextDesc: false,
+  topLine: 'Agriculture',
+  headline: 'Modern farming and agribusiness solutions',
+  description:
+    'From crop production to processing, we support the full agricultural value chain to ensure food security and economic growth.',
+  buttonLabel: 'Learn More',
+  imgStart: 'start',
+  img: require('../../images/agriculture.jpg'),
+  alt: 'Agriculture'
+};
+
+export const homeObjThree = {
+  lightBg: false,
+  lightText: true,
+  lightTopLine: true,
+  lightTextDesc: true,
+  topLine: 'Technology',
+  headline: 'Digital innovation and smart systems',
+  description:
+    'We build and implement technology that improves efficiency, enhances productivity, and supports modern businesses.',
+  buttonLabel: 'Discover',
+  imgStart: '',
+  img: require('../../images/technology.jpg'),
+  alt: 'Technology'
+};
+
+export const homeObjFour = {
+  lightBg: true,
+  lightText: false,
+  lightTopLine: true,
+  lightTextDesc: false,
+  topLine: 'Infrastructure',
+  headline: 'Building systems that support development',
+  description:
+    'Our infrastructure projects focus on construction, logistics, and industrial development to enable long-term growth.',
+  buttonLabel: 'View Projects',
+  imgStart: 'start',
+  img: require('../../images/infrastructure.jpg'),
+  alt: 'Infrastructure'
+};

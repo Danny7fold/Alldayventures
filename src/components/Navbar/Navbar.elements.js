@@ -4,7 +4,7 @@ import { FaMagento } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
 export const Nav = styled.nav`
-    background: #101522;
+    background: #ffffff;
     height: 80px;
     display: flex;
     justify-content: center;
@@ -13,6 +13,7 @@ export const Nav = styled.nav`
     position: sticky;
     top: 0;
     z-index: 999;
+    border-bottom: 1px solid #eaeaea;
 `
 
 export const NavbarContainer = styled(Container)`
@@ -24,18 +25,18 @@ export const NavbarContainer = styled(Container)`
 `
 
 export const NavLogo = styled(Link)`
-    color: #fff;
+    color: #111111;
     justify-self: flex-start;
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
     display: flex;
     align-items: center;
+    font-weight: bold;
 `
 
 export const NavIcon = styled(FaMagento)`
     margin-right: 0.5rem;
-
 `
 
 export const HamburgerIcon = styled.div`
@@ -48,7 +49,8 @@ export const HamburgerIcon = styled.div`
         right: 0;
         transform: translate(-100%, 60%);
         font-size: 1.8rem;
-        cursor: pointer;   
+        cursor: pointer;
+        color: #111111;
     }
 `
 
@@ -58,7 +60,6 @@ export const NavMenu = styled.ul`
     list-style: none;
     text-align: center;
     
-  
     @media screen and (max-width: 960px) {
         display: flex;
         flex-direction: column;
@@ -68,17 +69,17 @@ export const NavMenu = styled.ul`
         top: 80px;
         opacity: 1;
         transition: all 0.5s ease;
-        background-color: #101522;
+        background-color: #ffffff;
         left: ${({ click }) => (click ? 0 : '-100%')};
     }
 `
+
 export const NavItem = styled.li`
     height: 80px;
     border-bottom: 2px solid transparent;
-    border-radius: 2px;
 
     &:hover {
-        border-bottom: 4px solid #fff;
+        border-bottom: 3px solid #111111;
     }
 
     @media screen and (max-width: 960px) {
@@ -86,19 +87,19 @@ export const NavItem = styled.li`
 
         &:hover {
             border-bottom: none;
+            background: #f5f5f5;
         }
     }
-
 `
 
 export const NavLinks = styled(Link)`
-    color: #fff;
+    color: #111111;
     display: flex;
     align-items: center;
     text-decoration: none;
     padding: 0.5rem 1rem;
     height: 100%;
-    
+    font-weight: 500;
 
     @media screen and (max-width: 960px) {
         text-align: center;
@@ -107,7 +108,7 @@ export const NavLinks = styled(Link)`
         display: table;
 
         &:hover {
-            color: #4b59f7;
+            color: #C8922A;
             transition: all 0.3s ease;
         }
     }

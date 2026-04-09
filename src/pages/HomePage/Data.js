@@ -4,65 +4,65 @@ export const homeObjOne = {
     lightTopLine: true,
     lightText: true,
     lightTextDesc: true,
-    topLine: 'Marketing Agency',
-    headline: 'Lead Generation Specialist for Online Businesses',
+    topLine: 'Ghana Headquartered · Est. 2015',
+    headline: 'Building Tomorrow\'s Ghana, Today.',
     description:
-      'We help business owners increase their revenue. Our team of unique specialist can help you achieve your business goals.',
-    buttonLabel: 'Get Started',
+        'An innovative conglomerate creating meaningful employment across Agriculture, Technology, Infrastructure, and Services energizing Africa\'s greatest resource: its people.',
+    buttonLabel: 'Our Sectors',
     imgStart: '',
-    img: require('../../images/svg-1.svg'),
-    alt: 'Credit Card',
+    img: require('../../images/hero.jpg'),
+    alt: 'Allday Ventures Ghana',
     start: ''
-  };
-  
-  export const homeObjTwo = {
+};
+
+export const homeObjTwo = {
     primary: true,
     lightBg: false,
     lightTopLine: true,
     lightText: true,
     lightTextDesc: true,
-    topLine: 'Instant Setup',
-    headline: 'Extremely quick onboarding process',
+    topLine: 'Our Mission',
+    headline: 'Creating Sustainable Jobs That Energize Ghana\'s Workforce.',
     description:
-      "Once you've joined, our team of specialist will reach out to you and get you set up in minutes.",
+        'We are focused on overcoming the canker of unemployment by creating lasting opportunities across Agriculture & Agri-business, Technology, Infrastructure, and Services.',
     buttonLabel: 'Learn More',
     imgStart: '',
-    img: require('../../images/svg-2.svg'),
-    alt: 'Vault',
+    img: require('../../images/mission.jpg'),
+    alt: 'Allday Ventures Mission',
     start: ''
-  };
-  
-  export const homeObjThree = {
+};
+
+export const homeObjThree = {
     primary: false,
     lightBg: true,
     lightTopLine: false,
     lightText: false,
     lightTextDesc: false,
-    topLine: 'Sarah Jeni',
+    topLine: 'Mr. Kofi Appiah — CEO, Allday Ventures',
     headline:
-      'Ultra helped me increase my revenue by over 3X in less than 3 months!',
+        'We believe Ghana\'s greatest asset is its people.',
     description:
-      "Their team is wonderful! I can't believe I didn't start working with them earlier.",
-    buttonLabel: 'View Case Study',
+        'Every venture we build is a vessel for unlocking that potential — creating opportunities that last, and legacies that matter. Allday Ventures is committed to the manifestation of the dominion mandate through Love.',
+    buttonLabel: 'Our Story',
     imgStart: 'start',
-    img: require('../../images/profile.jpg'),
-    alt: 'Vault',
+    img: require('../../images/ceo.jpg'),
+    alt: 'Kofi Appiah CEO Allday Ventures',
     start: 'true'
-  };
-  
-  export const homeObjFour = {
+};
+
+export const homeObjFour = {
     primary: true,
     lightBg: false,
     lightTopLine: true,
     lightText: true,
     lightTextDesc: true,
-    topLine: 'Secure Database',
-    headline: 'All your data is stored on our secure server',
+    topLine: 'Our Values',
+    headline: 'Service. Equity. Sustainability.',
     description:
-      'You will never have to worry about your information getting leaked. Our team of security experts will ensure your records are kept safe.',
-    buttonLabel: 'Sign Up Now',
+        'Service to our people, Equity in our opportunities, and Sustainability in our solutions  these are the principles that guide every decision we make at Allday Ventures.',
+    buttonLabel: 'Get in Touch',
     imgStart: 'start',
-    img: require('../../images/svg-3.svg'),
-    alt: 'Vault',
+    img: require('../../images/values.jpg'),
+    alt: 'Allday Ventures Values',
     start: 'true'
-  };
+};

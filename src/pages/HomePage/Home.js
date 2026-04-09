@@ -1,17 +1,26 @@
 import React from 'react';
 import { InfoSection, Pricing } from '../../components';
-import { homeObjOne, homeObjThree, homeObjTwo, homeObjFour} from './Data';
+import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from './Data';
 
 const Home = () => {
     return (
         <>
+            {/* Hero: Who we are */}
             <InfoSection {...homeObjOne} />
+
+            {/* CEO quote / About */}
             <InfoSection {...homeObjThree} />
+
+            {/* Mission */}
             <InfoSection {...homeObjTwo} />
+
+            {/* Pricing / Sectors — keep your existing Pricing component */}
             <Pricing />
+
+            {/* Values */}
             <InfoSection {...homeObjFour} />
         </>
-    )
-}
+    );
+};
 
 export default Home;

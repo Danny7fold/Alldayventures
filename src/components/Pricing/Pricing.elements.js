@@ -6,7 +6,7 @@ export const PricingSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #4b59f7;
+  background: #ffffff;
 `;
 
 export const PricingWrapper = styled.div`
@@ -23,7 +23,7 @@ export const PricingWrapper = styled.div`
 `;
 
 export const PricingHeading = styled.h1`
-  color: #fff;
+  color: #111111;
   font-size: 48px;
   margin-bottom: 24px;
 `;
@@ -42,22 +42,28 @@ export const PricingContainer = styled.div`
 `;
 
 export const PricingCard = styled(Link)`
-  background: #242424;
-  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.2);
+  background: #f5f5f5;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   width: 280px;
   height: 500px;
   text-decoration: none;
   border-radius: 4px;
+  border: 1px solid #e0e0e0;
   &:nth-child(2) {
     margin: 24px;
+    background: #111111;
+    border: 2px solid #C8922A;
   }
   &:hover {
     transform: scale(1.06);
     transition: all 0.3s ease-out;
-    color: #1c2237;
+    box-shadow: 0 6px 24px rgba(200, 146, 42, 0.25);
   }
   @media screen and (max-width: 960px) {
     width: 90%;
+    &:nth-child(2) {
+      margin: 24px 0;
+    }
     &:hover {
       transform: none;
     }
@@ -70,25 +76,35 @@ export const PricingCardInfo = styled.div`
   height: 500px;
   padding: 24px;
   align-items: center;
-  color: #fff;
+  color: #111111;
+  ${PricingCard}:nth-child(2) & {
+    color: #ffffff;
+  }
 `;
 
 export const PricingCardIcon = styled.div`
   margin: 24px 0;
+  color: #C8922A;
 `;
 
 export const PricingCardPlan = styled.h3`
   margin-bottom: 5px;
   font-size: 24px;
+  color: inherit;
 `;
 
 export const PricingCardCost = styled.h4`
   font-size: 40px;
+  color: #C8922A;
 `;
 
 export const PricingCardLength = styled.p`
   font-size: 14px;
   margin-bottom: 24px;
+  color: #666666;
+  ${PricingCard}:nth-child(2) & {
+    color: #a9b3c1;
+  }
 `;
 
 export const PricingCardFeatures = styled.ul`
@@ -97,7 +113,10 @@ export const PricingCardFeatures = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #a9b3c1;
+  color: #444444;
+  ${PricingCard}:nth-child(2) & {
+    color: #a9b3c1;
+  }
 `;
 
 export const PricingCardFeature = styled.li`

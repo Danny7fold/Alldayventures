@@ -1,10 +1,11 @@
 import React from 'react';
 import { Button } from '../../globalStyles';
+import { GiFarmTractor } from 'react-icons/gi';
 import { AiFillThunderbolt } from 'react-icons/ai';
-import { GiCrystalBars } from 'react-icons/gi';
-import { GiCutDiamond, GiRock } from 'react-icons/gi';
-import { GiFloatingCrystal } from 'react-icons/gi';
+import { GiCutDiamond } from 'react-icons/gi';
+import { GiGearHammer } from 'react-icons/gi';
 import { IconContext } from 'react-icons/lib';
+
 import {
   PricingSection,
   PricingWrapper,
@@ -14,72 +15,100 @@ import {
   PricingCardInfo,
   PricingCardIcon,
   PricingCardPlan,
-  PricingCardCost,
-  PricingCardLength,
   PricingCardFeatures,
   PricingCardFeature
 } from './Pricing.elements';
 
- const Pricing = () => {
+const Pricing = () => {
   return (
-    <IconContext.Provider value={{ color: '#a9b3c1', size: 64 }}>
+    <IconContext.Provider value={{ color: '#C8922A', size: 64 }}>
       <PricingSection>
         <PricingWrapper>
           <PricingHeading>Our Services</PricingHeading>
+
           <PricingContainer>
-            <PricingCard to='/sign-up'>
+
+            {/* AGRICULTURE */}
+            <PricingCard>
               <PricingCardInfo>
                 <PricingCardIcon>
-                  <GiRock />
+                  <GiFarmTractor />
                 </PricingCardIcon>
-                <PricingCardPlan>Starter Pack</PricingCardPlan>
-                <PricingCardCost>$99.99</PricingCardCost>
-                <PricingCardLength>per month</PricingCardLength>
+
+                <PricingCardPlan>Agriculture & Agribusiness</PricingCardPlan>
+
                 <PricingCardFeatures>
-                  <PricingCardFeature>100 New Users</PricingCardFeature>
-                  <PricingCardFeature>$10,000 Budget</PricingCardFeature>
-                  <PricingCardFeature>Retargeting analytics</PricingCardFeature>
+                  <PricingCardFeature>Crop production & farming</PricingCardFeature>
+                  <PricingCardFeature>Agri-processing solutions</PricingCardFeature>
+                  <PricingCardFeature>Farmer support & training</PricingCardFeature>
                 </PricingCardFeatures>
-                <Button primary>Choose Plan</Button>
+
+                <Button primary>Learn More</Button>
               </PricingCardInfo>
             </PricingCard>
-            <PricingCard to='/sign-up'>
+
+            {/* TECHNOLOGY */}
+            <PricingCard>
               <PricingCardInfo>
                 <PricingCardIcon>
-                  <GiCrystalBars />
+                  <AiFillThunderbolt />
                 </PricingCardIcon>
-                <PricingCardPlan>Gold Rush</PricingCardPlan>
-                <PricingCardCost>$299.99</PricingCardCost>
-                <PricingCardLength>per month</PricingCardLength>
+
+                <PricingCardPlan>Technology Solutions</PricingCardPlan>
+
                 <PricingCardFeatures>
-                  <PricingCardFeature>1000 New Users</PricingCardFeature>
-                  <PricingCardFeature>$50,000 Budget</PricingCardFeature>
-                  <PricingCardFeature>Lead Gen Analytics</PricingCardFeature>
+                  <PricingCardFeature>Digital innovation</PricingCardFeature>
+                  <PricingCardFeature>Software & IT services</PricingCardFeature>
+                  <PricingCardFeature>Automation & smart systems</PricingCardFeature>
                 </PricingCardFeatures>
-                <Button primary>Choose Plan</Button>
+
+                <Button primary>Learn More</Button>
               </PricingCardInfo>
             </PricingCard>
-            <PricingCard to='/sign-up'>
+
+            {/* INFRASTRUCTURE */}
+            <PricingCard>
+              <PricingCardInfo>
+                <PricingCardIcon>
+                  <GiGearHammer />
+                </PricingCardIcon>
+
+                <PricingCardPlan>Infrastructure Development</PricingCardPlan>
+
+                <PricingCardFeatures>
+                  <PricingCardFeature>Construction projects</PricingCardFeature>
+                  <PricingCardFeature>Logistics & supply chain</PricingCardFeature>
+                  <PricingCardFeature>Industrial development</PricingCardFeature>
+                </PricingCardFeatures>
+
+                <Button primary>Learn More</Button>
+              </PricingCardInfo>
+            </PricingCard>
+
+            {/* SERVICES */}
+            <PricingCard>
               <PricingCardInfo>
                 <PricingCardIcon>
                   <GiCutDiamond />
                 </PricingCardIcon>
-                <PricingCardPlan>Diamond Kings</PricingCardPlan>
-                <PricingCardCost>$999.99</PricingCardCost>
-                <PricingCardLength>per month</PricingCardLength>
+
+                <PricingCardPlan>Business & Support Services</PricingCardPlan>
+
                 <PricingCardFeatures>
-                  <PricingCardFeature>Unlimited Users</PricingCardFeature>
-                  <PricingCardFeature>Unlimited Budget</PricingCardFeature>
-                  <PricingCardFeature>24/7 Support</PricingCardFeature>
+                  <PricingCardFeature>Consulting services</PricingCardFeature>
+                  <PricingCardFeature>Workforce development</PricingCardFeature>
+                  <PricingCardFeature>Project management</PricingCardFeature>
                 </PricingCardFeatures>
-                <Button primary>Choose Plan</Button>
+
+                <Button primary>Learn More</Button>
               </PricingCardInfo>
             </PricingCard>
+
           </PricingContainer>
         </PricingWrapper>
       </PricingSection>
     </IconContext.Provider>
   );
-}
+};
 
-export default Pricing
+export default Pricing;

@@ -7,6 +7,12 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     font-family: 'Source Sans Pro', sans-serif;
 }
+
+body {
+    background: #ffffff;
+    color: #111111;
+}
+
 * {
   scrollbar-width: thin;
   scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
@@ -24,7 +30,6 @@ const GlobalStyles = createGlobalStyle`
 }
 `;
 
-
 export const Container = styled.div`
   z-index: 1;
   width: 100%;
@@ -41,7 +46,7 @@ export const Container = styled.div`
 
 export const Button = styled.button`
   border-radius: 4px;
-  background: ${({ primary }) => (primary ? '#4B59F7' : '#0467FB')};
+  background: ${({ primary }) => (primary ? '#C8922A' : '#111111')};
   white-space: nowrap;
   padding: ${({ big }) => (big ? '12px 64px' : '10px 20px')};
   color: #fff;
@@ -51,13 +56,11 @@ export const Button = styled.button`
   cursor: pointer;
   &:hover {
     transition: all 0.3s ease-out;
-    background: #fff;
-    background-color: ${({ primary }) => (primary ? '#0467FB' : '#4B59F7')};
+    background-color: ${({ primary }) => (primary ? '#111111' : '#C8922A')};
   }
   @media screen and (max-width: 960px) {
     width: 100%;
   }
 `;
 
-
-export default  GlobalStyles;   
+export default GlobalStyles;
