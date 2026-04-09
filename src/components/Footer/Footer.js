@@ -55,12 +55,15 @@ function Footer() {
             <FooterLink to='/'>Terms of Service</FooterLink>
           </FooterLinkItems>
           <FooterLinkItems>
-            <FooterLinkTitle>Contact Us</FooterLinkTitle>
-            <FooterLink to='/'>Contact</FooterLink>
-            <FooterLink to='/'>Support</FooterLink>
-            <FooterLink to='/'>Destinations</FooterLink>
-            <FooterLink to='/'>Sponsorships</FooterLink>
-          </FooterLinkItems>
+  <FooterLinkTitle>Contact Us</FooterLinkTitle>
+  <FooterLink href="https://wa.me/233205601679" target="_blank">
+    +233 20 560 1679
+  </FooterLink>
+  <FooterLink to='/'>Contact</FooterLink>
+  <FooterLink to='/'>Support</FooterLink>
+  <FooterLink to='/'>Destinations</FooterLink>
+  <FooterLink to='/'>Sponsorships</FooterLink>
+</FooterLinkItems>
         </FooterLinksWrapper>
         <FooterLinksWrapper>
           <FooterLinkItems>
@@ -87,22 +90,29 @@ function Footer() {
           </SocialLogo>
           <WebsiteRights>ALL DAY VENTURES © {date.getFullYear()} </WebsiteRights>
           <SocialIcons>
-            <SocialIconLink href='/' target='_blank' aria-label='Facebook'>
-              <FaFacebook />
-            </SocialIconLink>
-            <SocialIconLink href='/' target='_blank' aria-label='Instagram'>
-              <FaInstagram />
-            </SocialIconLink>
-            <SocialIconLink href='/' target='_blank' aria-label='YouTube' >
-              <FaYoutube />
-            </SocialIconLink>
-            <SocialIconLink href='/' target='_blank' aria-label='Twitter'>
-              <FaTwitter />
-            </SocialIconLink>
-            <SocialIconLink href='/' target='_blank' aria-label='LinkedIn'>
-              <FaLinkedin />
-            </SocialIconLink>
-          </SocialIcons>
+  <SocialIconLink href='https://www.facebook.com/' target='_blank' aria-label='Facebook'>
+    <FaFacebook />
+  </SocialIconLink>
+  <SocialIconLink href='https://www.instagram.com/' target='_blank' aria-label='Instagram'>
+    <FaInstagram />
+  </SocialIconLink>
+  <SocialIconLink href='https://www.youtube.com/' target='_blank' aria-label='YouTube'>
+    <FaYoutube />
+  </SocialIconLink>
+  <SocialIconLink href='https://twitter.com/' target='_blank' aria-label='Twitter'>
+    <FaTwitter />
+  </SocialIconLink>
+  <SocialIconLink href='https://www.linkedin.com/' target='_blank' aria-label='LinkedIn'>
+    <FaLinkedin />
+  </SocialIconLink>
+   <SocialIconLink href='https://wa.me/233205601679' target='_blank' aria-label='WhatsApp'>
+    <img
+      src={require('../../images/whatsapp.png')}
+      alt='WhatsApp'
+      style={{ width: '24px', height: '24px' }}
+    />
+  </SocialIconLink>
+</SocialIcons>
         </SocialMediaWrap>
       </SocialMedia>
     </FooterContainer>

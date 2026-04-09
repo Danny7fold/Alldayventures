@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const homeObjOne = {
     primary: true,
     lightBg: false,
@@ -58,11 +60,17 @@ export const homeObjFour = {
     lightTextDesc: true,
     topLine: 'Our Values',
     headline: 'Service. Equity. Sustainability.',
-    description:
-        'Service to our people, Equity in our opportunities, and Sustainability in our solutions  these are the principles that guide every decision we make at Allday Ventures.',
+    description: (
+        <>
+            Service to our people, Equity in our opportunities, and Sustainability in our solutions. 
+            These are the principles that guide every decision we make at Allday Ventures. 
+            Contact us on WhatsApp: <strong>+233 20 560 1679</strong>
+        </>
+    ),
     buttonLabel: 'Get in Touch',
     imgStart: 'start',
     img: require('../../images/values.jpg'),
     alt: 'Allday Ventures Values',
-    start: 'true'
+    start: 'true',
+    url: 'https://wa.me/233205601679' 
 };

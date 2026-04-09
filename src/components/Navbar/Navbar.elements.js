@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { Container } from '../../globalStyles'
-import { FaMagento } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Container } from '../../globalStyles';
+import { FaMagento } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export const Nav = styled.nav`
     background: #ffffff;
@@ -14,15 +14,14 @@ export const Nav = styled.nav`
     top: 0;
     z-index: 999;
     border-bottom: 1px solid #eaeaea;
-`
+`;
 
 export const NavbarContainer = styled(Container)`
     display: flex;
     justify-content: space-between;
     height: 80px;
-
     ${Container}
-`
+`;
 
 export const NavLogo = styled(Link)`
     color: #111111;
@@ -33,11 +32,11 @@ export const NavLogo = styled(Link)`
     display: flex;
     align-items: center;
     font-weight: bold;
-`
+`;
 
 export const NavIcon = styled(FaMagento)`
     margin-right: 0.5rem;
-`
+`;
 
 export const HamburgerIcon = styled.div`
     display: none;
@@ -52,7 +51,7 @@ export const HamburgerIcon = styled.div`
         cursor: pointer;
         color: #111111;
     }
-`
+`;
 
 export const NavMenu = styled.ul`
     display: flex;
@@ -72,7 +71,7 @@ export const NavMenu = styled.ul`
         background-color: #ffffff;
         left: ${({ click }) => (click ? 0 : '-100%')};
     }
-`
+`;
 
 export const NavItem = styled.li`
     height: 80px;
@@ -90,7 +89,7 @@ export const NavItem = styled.li`
             background: #f5f5f5;
         }
     }
-`
+`;
 
 export const NavLinks = styled(Link)`
     color: #111111;
@@ -112,7 +111,7 @@ export const NavLinks = styled(Link)`
             transition: all 0.3s ease;
         }
     }
-`
+`;
 
 export const NavItemBtn = styled.li`
   @media screen and (max-width: 960px) {
@@ -134,4 +133,42 @@ export const NavBtnLink = styled(Link)`
   width: 100%;
   border: none;
   outline: none;
+`;
+
+// =======================
+// Mobile-only WhatsApp
+// =======================
+
+export const MobileWhatsAppContainer = styled.li`
+  display: none; /* STRICT HIDE ON PC/LAPTOP */
+
+  @media screen and (max-width: 960px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
+  }
+`;
+
+export const WhatsAppLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #111;
+  font-weight: bold;
+  font-size: 1.5rem;
+  width: 100%;
+
+  img {
+    width: 34px;
+    height: 34px;
+    margin-right: 10px;
+  }
+
+  &:hover {
+    color: #25d366; /* WhatsApp Green */
+  }
 `;

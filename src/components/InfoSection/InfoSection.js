@@ -4,7 +4,6 @@ import { Container, Button } from '../../globalStyles'
 import { Link } from 'react-router-dom'
 
  const InfoSection = ({ 
-    
     primary,
     lightBg,
     topLine,
@@ -17,7 +16,8 @@ import { Link } from 'react-router-dom'
     img,
     alt,
     imgStart,
-    start
+    start,
+    url // Make sure this is destructured
 }) => {
     return (
         <>
@@ -26,20 +26,31 @@ import { Link } from 'react-router-dom'
                     <InfoRow imgStart={imgStart}>
                         <InfoColumn>
                             <TextWrapper>
-                            <TopLine lightTopLine={lightTopLine}>{topLine}</TopLine>
-                            <Heading lightText={lightText}>{headline}</Heading>
-                            <Subtitle lightTextDesc={lightTextDesc}>{description}</Subtitle>
-                            <Link to='/sign-up'>
-                            <Button big fontBig primary={primary}>
-                                {buttonLabel}
-                            </Button>
-                            </Link>
+                                <TopLine lightTopLine={lightTopLine}>{topLine}</TopLine>
+                                <Heading lightText={lightText}>{headline}</Heading>
+                                <Subtitle lightTextDesc={lightTextDesc}>{description}</Subtitle>
+                                
+                                {url ? (
+                                    /* If a URL exists (like WhatsApp), use a standard anchor tag */
+                                    <a href={url} target="_blank" rel="noopener noreferrer">
+                                        <Button big fontBig primary={primary}>
+                                            {buttonLabel}
+                                        </Button>
+                                    </a>
+                                ) : (
+                                    /* Otherwise, keep using the internal Link */
+                                    <Link to='/sign-up'>
+                                        <Button big fontBig primary={primary}>
+                                            {buttonLabel}
+                                        </Button>
+                                    </Link>
+                                )}
                             </TextWrapper>
                         </InfoColumn>
                         <InfoColumn>
-                        <ImgWrapper start={start}>
-                            <Img src={img} alt={alt} />
-                        </ImgWrapper>
+                            <ImgWrapper start={start}>
+                                <Img src={img} alt={alt} />
+                            </ImgWrapper>
                         </InfoColumn>
                     </InfoRow>
                 </Container>
