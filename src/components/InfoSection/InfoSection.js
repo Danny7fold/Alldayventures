@@ -17,7 +17,8 @@ import { Link } from 'react-router-dom'
     alt,
     imgStart,
     start,
-    url // Make sure this is destructured
+    url ,
+    link
 }) => {
     return (
         <>
@@ -39,7 +40,7 @@ import { Link } from 'react-router-dom'
                                     </a>
                                 ) : (
                                     /* Otherwise, keep using the internal Link */
-                                    <Link to='/sign-up'>
+                                    <Link to={link || '/sign-up'}>
                                         <Button big fontBig primary={primary}>
                                             {buttonLabel}
                                         </Button>

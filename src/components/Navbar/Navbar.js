@@ -65,7 +65,11 @@ function Navbar() {
         <Nav>
           <NavbarContainer>
             <NavLogo to="/" onClick={closeMobileMenu}>
-              <NavIcon />
+              <img
+                src={require("../../images/logo.png")}
+                alt="All Day Ventures"
+                style={{ height: "60px", marginRight: "0px" ,objectFit:"cover",marginTop:"15px"}}
+              />
               ALL DAY VENTURES
             </NavLogo>
             <HamburgerIcon onClick={handleClick}>
@@ -73,15 +77,27 @@ function Navbar() {
             </HamburgerIcon>
             <NavMenu onClick={handleClick} click={click}>
               <NavItem onClick={handleHomeClick} homeClick={homeClick}>
-                <NavLinks to="/" onClick={closeMobileMenu}>Home</NavLinks>
+                <NavLinks to="/" onClick={closeMobileMenu}>
+                  Home
+                </NavLinks>
               </NavItem>
 
-              <NavItem onClick={handleServicesClick} servicesClick={servicesClick}>
-                <NavLinks to="/services" onClick={closeMobileMenu}>Services</NavLinks>
+              <NavItem
+                onClick={handleServicesClick}
+                servicesClick={servicesClick}
+              >
+                <NavLinks to="/services" onClick={closeMobileMenu}>
+                  Services
+                </NavLinks>
               </NavItem>
 
-              <NavItem onClick={handleProductsClick} productsClick={productsClick}>
-                <NavLinks to="/products" onClick={closeMobileMenu}>Products</NavLinks>
+              <NavItem
+                onClick={handleProductsClick}
+                productsClick={productsClick}
+              >
+                <NavLinks to="/products" onClick={closeMobileMenu}>
+                  Products
+                </NavLinks>
               </NavItem>
 
               <NavItemBtn>
@@ -91,15 +107,17 @@ function Navbar() {
                   </NavBtnLink>
                 ) : (
                   <NavBtnLink to="/sign-up">
-                    <Button onClick={closeMobileMenu} fontBig primary>SIGN UP</Button>
+                    <Button onClick={closeMobileMenu} fontBig primary>
+                      SIGN UP
+                    </Button>
                   </NavBtnLink>
                 )}
               </NavItemBtn>
 
               {/* WHATSAPP SECTION - Fully Centered on Mobile, Hidden on Desktop */}
               <MobileWhatsAppContainer>
-                <WhatsAppLink 
-                  href="https://wa.me/233205601679" 
+                <WhatsAppLink
+                  href="https://wa.me/233205601679"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={closeMobileMenu}
@@ -111,7 +129,6 @@ function Navbar() {
                   +233 20 560 1679
                 </WhatsAppLink>
               </MobileWhatsAppContainer>
-
             </NavMenu>
           </NavbarContainer>
         </Nav>

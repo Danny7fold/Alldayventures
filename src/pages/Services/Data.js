@@ -34,10 +34,11 @@ export const homeObjThree = {
   headline: 'Building the foundation for development',
   description:
     'From construction to logistics, we develop infrastructure that supports economic growth and improves livelihoods across communities.',
-  buttonLabel: 'Discover',
+  buttonLabel: 'View Projects',
   imgStart: '',
-  img: require('../../images/infrastructure.jpg'),
-  alt: 'Infrastructure'
+  img: require('../../images/infrastructure1.jpeg'),
+  alt: 'Infrastructure',
+  link: '/infrastructure',   // 👈 add this
 };
 
 export const homeObjFour = {
