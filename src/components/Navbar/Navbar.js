@@ -5,8 +5,6 @@ import { Button } from "../../globalStyles";
 import {
   Nav,
   NavbarContainer,
-  NavLogo,
-  NavIcon,
   HamburgerIcon,
   NavMenu,
   NavItem,
