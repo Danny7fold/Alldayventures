@@ -69,7 +69,8 @@ function Navbar() {
                 alt="All Day Ventures"
                 style={{ height: "60px", marginRight: "0px" ,objectFit:"cover",marginTop:"15px"}}
               />
-              ALL DAY VENTURES
+              <h5 style={{fontSize:"26px",fontWeight:"bolder"}}> ALL DAY VENTURES</h5>
+             
             </NavLogo>
             <HamburgerIcon onClick={handleClick}>
               {click ? <FaTimes /> : <FaBars />}
