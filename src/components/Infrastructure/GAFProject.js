@@ -19,15 +19,6 @@ const fadeRight = keyframes`
   to   { opacity: 1; transform: translateX(0); }
 `;
 
-const animateIn = (direction, delay) => css`
-  opacity: 0;
-  ${({ isVisible }) =>
-    isVisible &&
-    css`
-      animation: ${direction === 'up' ? fadeUp : direction === 'left' ? fadeLeft : fadeRight}
-        0.7s ease-out ${delay} forwards;
-    `}
-`;
 
 const PageWrapper = styled.div`
   position: relative;
