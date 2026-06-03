@@ -14,10 +14,6 @@ const fadeLeft = keyframes`
   to   { opacity: 1; transform: translateX(0); }
 `;
 
-const fadeRight = keyframes`
-  from { opacity: 0; transform: translateX(40px); }
-  to   { opacity: 1; transform: translateX(0); }
-`;
 
 
 const PageWrapper = styled.div`
