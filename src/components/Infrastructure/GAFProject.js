@@ -1,7 +1,33 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import { FaHome } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import useScrollAnimation from '../../hooks/useScrollAnimation';
+
+const fadeUp = keyframes`
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+`;
+
+const fadeLeft = keyframes`
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+`;
+
+const fadeRight = keyframes`
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+`;
+
+const animateIn = (direction, delay) => css`
+  opacity: 0;
+  ${({ isVisible }) =>
+    isVisible &&
+    css`
+      animation: ${direction === 'up' ? fadeUp : direction === 'left' ? fadeLeft : fadeRight}
+        0.7s ease-out ${delay} forwards;
+    `}
+`;
 
 const PageWrapper = styled.div`
   position: relative;
@@ -64,6 +90,10 @@ const Breadcrumb = styled.div`
   span { color: #fff; }
 `;
 
+const HeroSpacer = styled.div`
+  height: 70vh;
+`;
+
 const ContentWrapper = styled.div`
   position: relative;
   z-index: 1;
@@ -82,6 +112,12 @@ const BodyText = styled.p`
   color: #444444;
   margin: 0 0 1.2rem;
   max-width: 860px;
+  opacity: 0;
+  ${({ isVisible, delay }) =>
+    isVisible &&
+    css`
+      animation: ${fadeUp} 0.6s ease-out ${delay || '0s'} forwards;
+    `}
 `;
 
 const ReadMore = styled.span`
@@ -100,6 +136,12 @@ const SectionHeading = styled.h2`
   color: #111111;
   text-transform: uppercase;
   margin: 0 0 2.5rem;
+  opacity: 0;
+  ${({ isVisible }) =>
+    isVisible &&
+    css`
+      animation: ${fadeUp} 0.5s ease-out forwards;
+    `}
   @media (max-width: 768px) { font-size: 28px; }
 `;
 
@@ -108,8 +150,13 @@ const SectionHeadingRow = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 2.5rem;
-`;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+`;
 const ViewAllBtn = styled(Link)`
   font-size: 15px;
   font-weight: 600;
@@ -135,6 +182,12 @@ const GlanceCard = styled.div`
   background: #ffffff;
   display: flex;
   flex-direction: column;
+  opacity: 0;
+  ${({ isVisible, delay }) =>
+    isVisible &&
+    css`
+      animation: ${fadeUp} 0.6s ease-out ${delay || '0s'} forwards;
+    `}
 `;
 
 const GlanceImg = styled.img`
@@ -172,6 +225,12 @@ const BriefGrid = styled.div`
 const BriefCard = styled.div`
   background: #ffffff;
   padding: 2rem 1.5rem;
+  opacity: 0;
+  ${({ isVisible, delay }) =>
+    isVisible &&
+    css`
+      animation: ${fadeUp} 0.6s ease-out ${delay || '0s'} forwards;
+    `}
   &:hover { background: #f9f9f9; }
 `;
 
@@ -218,6 +277,12 @@ const StatCard = styled.div`
   background: #ffffff;
   padding: 2rem 1.5rem;
   text-align: center;
+  opacity: 0;
+  ${({ isVisible, delay }) =>
+    isVisible &&
+    css`
+      animation: ${fadeUp} 0.6s ease-out ${delay || '0s'} forwards;
+    `}
   .num {
     font-size: 40px;
     font-weight: 700;
@@ -238,6 +303,12 @@ const DesignPoint = styled.div`
   align-items: flex-start;
   padding: 2rem 0;
   border-bottom: 0.5px solid #e0e0e0;
+  opacity: 0;
+  ${({ isVisible, delay }) =>
+    isVisible &&
+    css`
+      animation: ${fadeLeft} 0.6s ease-out ${delay || '0s'} forwards;
+    `}
   &:last-child { border-bottom: none; }
 `;
 
@@ -273,6 +344,12 @@ const DesignText = styled.div`
 const GAFProject = () => {
   const [expanded, setExpanded] = useState(false);
 
+  const [aboutRef, aboutVisible]       = useScrollAnimation(0.2);
+  const [glanceRef, glanceVisible]     = useScrollAnimation(0.2);
+  const [briefRef, briefVisible]       = useScrollAnimation(0.2);
+  const [rendersRef, rendersVisible]   = useScrollAnimation(0.2);
+  const [designRef, designVisible]     = useScrollAnimation(0.2);
+
   return (
     <PageWrapper>
       <HeroSection>
@@ -286,11 +363,13 @@ const GAFProject = () => {
         </Breadcrumb>
       </HeroSection>
 
+      <HeroSpacer />
+
       <ContentWrapper>
 
         {/* About */}
-        <Section>
-          <BodyText>
+        <Section ref={aboutRef}>
+          <BodyText isVisible={aboutVisible} delay="0s">
             The Ghana Armed Forces Special Needs Center at Burma Camp, Accra is a
             landmark project delivered by All Day Ventures for the Ghana Armed Forces.
             The center provides dedicated education, therapy, and emotional support
@@ -300,7 +379,7 @@ const GAFProject = () => {
           </BodyText>
           {expanded && (
             <>
-              <BodyText>
+              <BodyText isVisible={aboutVisible} delay="0.15s">
                 The facility spans over 10,570 sqm across four floors, housing 42
                 autism-friendly classrooms, sensory integration rooms, speech and
                 language therapy suites, occupational therapy rooms, and behavioural
@@ -308,7 +387,7 @@ const GAFProject = () => {
                 centre, multi-purpose hall, secure playgrounds, sensory gardens, and
                 a full administrative block.
               </BodyText>
-              <BodyText>
+              <BodyText isVisible={aboutVisible} delay="0.3s">
                 Designed by Eighth Urban Studios, the building features colorful
                 vertical fins along its facade, generous courtyard spaces, rooftop
                 solar panels, and a basketball court and football field — creating
@@ -326,37 +405,37 @@ const GAFProject = () => {
         <Divider />
 
         {/* At a Glance */}
-        <Section dark>
-          <SectionHeading>At a Glance</SectionHeading>
+        <Section dark ref={glanceRef}>
+          <SectionHeading isVisible={glanceVisible}>At a Glance</SectionHeading>
           <StatsGrid>
-            <StatCard>
+            <StatCard isVisible={glanceVisible} delay="0.1s">
               <div className="num">42</div>
               <div className="lbl">Autism-friendly classrooms</div>
             </StatCard>
-            <StatCard>
+            <StatCard isVisible={glanceVisible} delay="0.2s">
               <div className="num">4</div>
               <div className="lbl">Floor levels</div>
             </StatCard>
-            <StatCard>
+            <StatCard isVisible={glanceVisible} delay="0.3s">
               <div className="num">10,570</div>
               <div className="lbl">sqm total area</div>
             </StatCard>
-            <StatCard>
+            <StatCard isVisible={glanceVisible} delay="0.4s">
               <div className="num">3</div>
               <div className="lbl">Courtyard spaces</div>
             </StatCard>
           </StatsGrid>
 
           <ThreeGrid>
-            <GlanceCard>
+            <GlanceCard isVisible={glanceVisible} delay="0.2s">
               <GlanceImg src={require('../../images/page_14.jpg')} alt="Aerial view" />
               <GlanceCaption>4-storey facility with rooftop solar panels and green courtyard spaces.</GlanceCaption>
             </GlanceCard>
-            <GlanceCard>
+            <GlanceCard isVisible={glanceVisible} delay="0.35s">
               <GlanceImg src={require('../../images/page_17.jpg')} alt="Front elevation" />
               <GlanceCaption>Colorful vertical fin facade designed to engage and welcome young students.</GlanceCaption>
             </GlanceCard>
-            <GlanceCard>
+            <GlanceCard isVisible={glanceVisible} delay="0.5s">
               <GlanceImg src={require('../../images/page_18.jpg')} alt="Grounds" />
               <GlanceCaption>Football field, basketball court, and secure sensory playgrounds on site.</GlanceCaption>
             </GlanceCard>
@@ -366,10 +445,10 @@ const GAFProject = () => {
         <Divider />
 
         {/* Design Brief */}
-        <Section>
-          <SectionHeading>Design Brief</SectionHeading>
+        <Section ref={briefRef}>
+          <SectionHeading isVisible={briefVisible}>Design Brief</SectionHeading>
           <BriefGrid>
-            <BriefCard>
+            <BriefCard isVisible={briefVisible} delay="0.1s">
               <BriefCardTitle>Teaching & Learning</BriefCardTitle>
               <BriefList>
                 <li>42 autism-friendly classrooms</li>
@@ -379,7 +458,7 @@ const GAFProject = () => {
                 <li>Sensory integration rooms</li>
               </BriefList>
             </BriefCard>
-            <BriefCard>
+            <BriefCard isVisible={briefVisible} delay="0.2s">
               <BriefCardTitle>Staff Facilities</BriefCardTitle>
               <BriefList>
                 <li>Teaching staff offices</li>
@@ -389,7 +468,7 @@ const GAFProject = () => {
                 <li>Multi-purpose training / workshop hall</li>
               </BriefList>
             </BriefCard>
-            <BriefCard>
+            <BriefCard isVisible={briefVisible} delay="0.3s">
               <BriefCardTitle>Outdoor & Recreation</BriefCardTitle>
               <BriefList>
                 <li>Secure playgrounds (active play)</li>
@@ -399,7 +478,7 @@ const GAFProject = () => {
                 <li>Outdoor seating and shaded areas</li>
               </BriefList>
             </BriefCard>
-            <BriefCard>
+            <BriefCard isVisible={briefVisible} delay="0.4s">
               <BriefCardTitle>Administration</BriefCardTitle>
               <BriefList>
                 <li>Reception and waiting area</li>
@@ -409,7 +488,7 @@ const GAFProject = () => {
                 <li>Records and secure storage rooms</li>
               </BriefList>
             </BriefCard>
-            <BriefCard>
+            <BriefCard isVisible={briefVisible} delay="0.5s">
               <BriefCardTitle>Utility & Services</BriefCardTitle>
               <BriefList>
                 <li>General storage rooms</li>
@@ -418,7 +497,7 @@ const GAFProject = () => {
                 <li>Maintenance and services rooms</li>
               </BriefList>
             </BriefCard>
-            <BriefCard>
+            <BriefCard isVisible={briefVisible} delay="0.6s">
               <BriefCardTitle>Circulation & Support</BriefCardTitle>
               <BriefList>
                 <li>Wide, uncluttered corridors</li>
@@ -433,21 +512,23 @@ const GAFProject = () => {
         <Divider />
 
         {/* Renders */}
-        <Section dark>
+        <Section dark ref={rendersRef}>
           <SectionHeadingRow>
-            <SectionHeading style={{ margin: 0 }}>Architectural Renders</SectionHeading>
+            <SectionHeading isVisible={rendersVisible} style={{ margin: 0 }}>
+              Architectural Renders
+            </SectionHeading>
             <ViewAllBtn to="/infrastructure">Back to Infrastructure</ViewAllBtn>
           </SectionHeadingRow>
           <ThreeGrid>
-            <GlanceCard>
+            <GlanceCard isVisible={rendersVisible} delay="0.2s">
               <GlanceImg src={require('../../images/page_16.jpg')} alt="Night render" />
               <GlanceCaption>Night aerial render showing the illuminated facade and courtyard.</GlanceCaption>
             </GlanceCard>
-            <GlanceCard>
+            <GlanceCard isVisible={rendersVisible} delay="0.35s">
               <GlanceImg src={require('../../images/page_13.jpg')} alt="Day elevation" />
               <GlanceCaption>Street-level day render of the main entrance and colorful fins.</GlanceCaption>
             </GlanceCard>
-            <GlanceCard>
+            <GlanceCard isVisible={rendersVisible} delay="0.5s">
               <GlanceImg src={require('../../images/page_1.jpg')} alt="Aerial day" />
               <GlanceCaption>Aerial day render showing the full site including sports facilities.</GlanceCaption>
             </GlanceCard>
@@ -457,9 +538,9 @@ const GAFProject = () => {
         <Divider />
 
         {/* Interior Design */}
-        <Section>
-          <SectionHeading>Interior Design Strategy</SectionHeading>
-          <DesignPoint>
+        <Section ref={designRef}>
+          <SectionHeading isVisible={designVisible}>Interior Design Strategy</SectionHeading>
+          <DesignPoint isVisible={designVisible} delay="0.1s">
             <DesignNum>1</DesignNum>
             <DesignText>
               <h4>Calm, predictable, and low-sensory</h4>
@@ -467,7 +548,7 @@ const GAFProject = () => {
               environment where children can focus and feel secure.</p>
             </DesignText>
           </DesignPoint>
-          <DesignPoint>
+          <DesignPoint isVisible={designVisible} delay="0.2s">
             <DesignNum>2</DesignNum>
             <DesignText>
               <h4>Acoustic ceilings, soft lighting, and muted colours</h4>
@@ -475,7 +556,7 @@ const GAFProject = () => {
               harsh contrasts. Neutral colour palettes promote calmness.</p>
             </DesignText>
           </DesignPoint>
-          <DesignPoint>
+          <DesignPoint isVisible={designVisible} delay="0.3s">
             <DesignNum>3</DesignNum>
             <DesignText>
               <h4>Simple, sturdy, and adjustable furniture</h4>
@@ -483,7 +564,7 @@ const GAFProject = () => {
               with safety in mind for children who may fall.</p>
             </DesignText>
           </DesignPoint>
-          <DesignPoint>
+          <DesignPoint isVisible={designVisible} delay="0.4s">
             <DesignNum>4</DesignNum>
             <DesignText>
               <h4>Clear zones with wide paths and ample personal space</h4>
@@ -491,7 +572,7 @@ const GAFProject = () => {
               circulation paths giving children space to move safely.</p>
             </DesignText>
           </DesignPoint>
-          <DesignPoint>
+          <DesignPoint isVisible={designVisible} delay="0.5s">
             <DesignNum>5</DesignNum>
             <DesignText>
               <h4>Smooth walls and minimal clutter</h4>
@@ -499,7 +580,7 @@ const GAFProject = () => {
               to reduce visual noise and help children maintain focus.</p>
             </DesignText>
           </DesignPoint>
-          <DesignPoint>
+          <DesignPoint isVisible={designVisible} delay="0.6s">
             <DesignNum>6</DesignNum>
             <DesignText>
               <h4>Sound-absorbing materials, sensory tools, and visual cues</h4>

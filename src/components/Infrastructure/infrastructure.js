@@ -1,7 +1,23 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import { FaHome } from 'react-icons/fa';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import useScrollAnimation from '../../hooks/useScrollAnimation';
+
+const fadeUp = keyframes`
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+`;
+
+const fadeLeft = keyframes`
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+`;
+
+const fadeRight = keyframes`
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+`;
 
 const PageWrapper = styled.div`
   position: relative;
@@ -60,8 +76,12 @@ const Breadcrumb = styled.div`
   align-items: center;
   font-size: 14px;
   color: #ccc;
-  a { color: #ccc; text-decoration: underline; }
+  a { color: #ccc; text-decoration: none; &:hover { text-decoration: underline; } }
   span { color: #fff; }
+`;
+
+const HeroSpacer = styled.div`
+  height: 70vh;
 `;
 
 const ContentWrapper = styled.div`
@@ -85,6 +105,14 @@ const PortfolioHeading = styled.h2`
   letter-spacing: -0.5px;
   margin: 0 0 3rem;
   text-transform: uppercase;
+  opacity: 0;
+
+  ${({ isVisible }) =>
+    isVisible &&
+    css`
+      animation: ${fadeUp} 0.5s ease-out forwards;
+    `}
+
   @media (max-width: 768px) { font-size: 28px; }
 `;
 
@@ -95,17 +123,11 @@ const PortfolioGrid = styled.div`
   @media (max-width: 768px) { grid-template-columns: 1fr; }
 `;
 
-const ProjectThumb = styled.div`
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-`;
-
 const ProjectImageBox = styled.div`
   width: 100%;
   height: 320px;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 4px 4px 0 0;
   img {
     width: 100%;
     height: 100%;
@@ -113,18 +135,60 @@ const ProjectImageBox = styled.div`
     display: block;
     transition: transform 0.5s ease;
   }
-  &:hover img { transform: scale(1.04); }
+`;
+
+const ClickHint = styled.span`
+  font-size: 13px;
+  font-weight: 600;
+  color: #C8922A;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.3s ease, opacity 0.3s ease;
+
+  &::after {
+    content: '→';
+    font-size: 14px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  @media (min-width: 961px) {
+    opacity: 0;
+  }
 `;
 
 const ProjectTextBox = styled.div`
-  padding: 1.5rem 0 2rem;
+  padding: 1.25rem 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  transition: border-color 0.3s ease;
 `;
 
 const ProjectTitle = styled.h3`
   font-size: 22px;
   font-weight: 700;
   color: #111111;
-  margin: 0 0 12px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &::after {
+    content: '→';
+    font-size: 18px;
+    color: #C8922A;
+    transition: transform 0.3s ease;
+    display: inline-block;
+    flex-shrink: 0;
+  }
 `;
 
 const ProjectDesc = styled.p`
@@ -135,6 +199,61 @@ const ProjectDesc = styled.p`
   max-width: 480px;
 `;
 
+const ProjectThumb = styled.div`
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  opacity: 0;
+  border-radius: 4px;
+  -webkit-tap-highlight-color: rgba(200, 146, 42, 0.1);
+
+  ${({ isVisible, side, delay }) =>
+    isVisible &&
+    css`
+      animation: ${side === 'left' ? fadeLeft : fadeRight}
+        0.7s ease-out ${delay || '0s'} forwards;
+    `}
+
+  &:hover ${ProjectImageBox} img {
+    transform: scale(1.04);
+  }
+
+  &:hover ${ProjectTitle}::after {
+    transform: translateX(5px);
+  }
+
+  &:hover ${ClickHint} {
+    opacity: 1;
+    gap: 10px;
+  }
+
+  &:hover ${ClickHint}::after {
+    transform: translateX(3px);
+  }
+
+  &:hover ${ProjectTextBox} {
+    border-color: #C8922A;
+  }
+
+  &:active ${ProjectTextBox} {
+    background: #fffaf3;
+    border-color: #C8922A;
+  }
+
+  @media (max-width: 960px) {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+
+    &:hover ${ProjectImageBox} img {
+      transform: none;
+    }
+
+    &:active ${ProjectTextBox} {
+      background: #fffaf3;
+      border-color: #C8922A;
+    }
+  }
+`;
+
 const Divider = styled.div`
   height: 1px;
   background: #e8e8e8;
@@ -142,6 +261,8 @@ const Divider = styled.div`
 `;
 
 const Infrastructure = () => {
+  const [sectionRef, sectionVisible] = useScrollAnimation(0.2);
+
   return (
     <PageWrapper>
       <HeroSection>
@@ -151,37 +272,45 @@ const Infrastructure = () => {
           <h1>Infrastructure</h1>
         </HeroText>
         <Breadcrumb>
-        <FaHome /> · <a href="/">Home</a> · <span>Infrastructure</span>
+          <FaHome /> · <a href="/">Home</a> · <span>Infrastructure</span>
         </Breadcrumb>
       </HeroSection>
 
-      <ContentWrapper>
-        <Section>
-          <PortfolioHeading>Business Portfolio</PortfolioHeading>
-          <PortfolioGrid>
-            <Link style={{ textDecoration: "none", color: "inherit" }} to="/infrastructure/gaf">
-            <ProjectThumb>
-              <ProjectImageBox>
-                <img src={require('../../images/page_1.jpg')} alt="GAF Special Needs Center" />
-              </ProjectImageBox>
-              <ProjectTextBox>
-                <ProjectTitle>GAF Special Needs Center</ProjectTitle>
-                <ProjectDesc>
-                  Delivering a 42-classroom special needs school at Burma Camp for
-                  the Ghana Armed Forces — education, therapy, and sensory spaces
-                  across 10,000+ sqm.
-                </ProjectDesc>
-              </ProjectTextBox>
-            </ProjectThumb>
-            </Link>
-            
+      <HeroSpacer />
 
-            <ProjectThumb>
+      <ContentWrapper>
+        <Section ref={sectionRef}>
+          <PortfolioHeading isVisible={sectionVisible}>
+            Business Portfolio
+          </PortfolioHeading>
+
+          <PortfolioGrid>
+            <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/infrastructure/gaf">
+              <ProjectThumb isVisible={sectionVisible} side="left" delay="0.2s">
+                <ProjectImageBox>
+                  <img src={require('../../images/page_1.jpg')} alt="GAF Special Needs Center" />
+                </ProjectImageBox>
+                <ProjectTextBox>
+                  <ProjectTitle>GAF Special Needs Center</ProjectTitle>
+                  <ProjectDesc>
+                    Delivering a 42-classroom special needs school at Burma Camp for
+                    the Ghana Armed Forces — education, therapy, and sensory spaces
+                    across 10,000+ sqm.
+                  </ProjectDesc>
+                  <ClickHint>View Project</ClickHint>
+                </ProjectTextBox>
+              </ProjectThumb>
+            </Link>
+
+            <ProjectThumb isVisible={sectionVisible} side="right" delay="0.4s">
               <ProjectImageBox>
                 <img src={require('../../images/infrastructure1.jpeg')} alt="Industrial Development" />
               </ProjectImageBox>
               <ProjectTextBox>
-                <ProjectTitle>Industrial development</ProjectTitle>
+                <ProjectTitle style={{ cursor: 'default' }}>
+                  Industrial development
+                  <span style={{ opacity: 0, pointerEvents: 'none' }}>→</span>
+                </ProjectTitle>
                 <ProjectDesc>
                   Construction and logistics infrastructure designed to enable
                   long-term economic growth across Ghanaian communities.

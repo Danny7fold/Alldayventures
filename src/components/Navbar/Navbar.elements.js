@@ -4,113 +4,143 @@ import { FaMagento } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 export const Nav = styled.nav`
-    background: #ffffff;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    border-bottom: 1px solid #eaeaea;
+  background: #ffffff;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  border-bottom: 1px solid #eaeaea;
 `;
 
 export const NavbarContainer = styled(Container)`
-    display: flex;
-    justify-content: space-between;
-    height: 80px;
-    ${Container}
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  ${Container}
 `;
 
 export const NavLogo = styled(Link)`
-    color: #111111;
-    justify-self: flex-start;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
+  color: #111111;
+  justify-self: flex-start;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  min-width: 0;
+
+  img {
+    height: 60px;
+    object-fit: cover;
+    margin-top: 15px;
+    flex-shrink: 0;
+
+    @media screen and (max-width: 960px) {
+      height: 36px;
+      margin-top: 0;
+    }
+  }
+`;
+
+export const NavLogoText = styled.h5`
+  font-size: 26px;
+  font-weight: 800;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media screen and (max-width: 960px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 400px) {
+    font-size: 14px;
+  }
 `;
 
 export const NavIcon = styled(FaMagento)`
-    margin-right: 0.5rem;
+  margin-right: 0.5rem;
 `;
 
 export const HamburgerIcon = styled.div`
-    display: none;
+  display: none;
 
-    @media screen and (max-width: 960px) {
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        transform: translate(-100%, 60%);
-        font-size: 1.8rem;
-        cursor: pointer;
-        color: #111111;
-    }
+  @media screen and (max-width: 960px) {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #111111;
+  }
 `;
 
 export const NavMenu = styled.ul`
+  display: flex;
+  align-items: center;
+  list-style: none;
+  text-align: center;
+
+  @media screen and (max-width: 960px) {
     display: flex;
-    align-items: center;
-    list-style: none;
-    text-align: center;
-    
-    @media screen and (max-width: 960px) {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: 90vh;
-        position: absolute;
-        top: 80px;
-        opacity: 1;
-        transition: all 0.5s ease;
-        background-color: #ffffff;
-        left: ${({ click }) => (click ? 0 : '-100%')};
-    }
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    top: 80px;
+    opacity: 1;
+    transition: all 0.5s ease;
+    background-color: #ffffff;
+    left: ${({ click }) => (click ? 0 : '-100%')};
+  }
 `;
 
 export const NavItem = styled.li`
-    height: 80px;
-    border-bottom: 2px solid transparent;
+  height: 80px;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    border-bottom: 3px solid #111111;
+  }
+
+  @media screen and (max-width: 960px) {
+    width: 100%;
 
     &:hover {
-        border-bottom: 3px solid #111111;
+      border-bottom: none;
+      background: #f5f5f5;
     }
-
-    @media screen and (max-width: 960px) {
-        width: 100%;
-
-        &:hover {
-            border-bottom: none;
-            background: #f5f5f5;
-        }
-    }
+  }
 `;
 
 export const NavLinks = styled(Link)`
-    color: #111111;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    height: 100%;
-    font-weight: 500;
+  color: #111111;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  height: 100%;
+  font-weight: 500;
 
-    @media screen and (max-width: 960px) {
-        text-align: center;
-        padding: 2rem;
-        width: 100%;
-        display: table;
+  @media screen and (max-width: 960px) {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    display: table;
 
-        &:hover {
-            color: #C8922A;
-            transition: all 0.3s ease;
-        }
+    &:hover {
+      color: #C8922A;
+      transition: all 0.3s ease;
     }
+  }
 `;
 
 export const NavItemBtn = styled.li`
@@ -135,12 +165,8 @@ export const NavBtnLink = styled(Link)`
   outline: none;
 `;
 
-// =======================
-// Mobile-only WhatsApp
-// =======================
-
 export const MobileWhatsAppContainer = styled.li`
-  display: none; /* STRICT HIDE ON PC/LAPTOP */
+  display: none;
 
   @media screen and (max-width: 960px) {
     display: flex;
@@ -169,6 +195,6 @@ export const WhatsAppLink = styled.a`
   }
 
   &:hover {
-    color: #25d366; /* WhatsApp Green */
+    color: #25d366;
   }
 `;

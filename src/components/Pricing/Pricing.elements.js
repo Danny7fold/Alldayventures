@@ -14,11 +14,9 @@ export const PricingWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
+
   @media screen and (max-width: 960px) {
     margin: 0 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 `;
 
@@ -32,11 +30,9 @@ export const PricingContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
   @media screen and (max-width: 960px) {
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 100%;
   }
 `;
@@ -49,21 +45,31 @@ export const PricingCard = styled(Link)`
   text-decoration: none;
   border-radius: 4px;
   border: 1px solid #e0e0e0;
+  cursor: pointer;
+  margin: 0 12px;
+  -webkit-tap-highlight-color: rgba(200, 146, 42, 0.15);
+
   &:nth-child(2) {
-    margin: 24px;
     background: #111111;
     border: 2px solid #C8922A;
   }
+
   &:hover {
     transform: scale(1.06);
     transition: all 0.3s ease-out;
     box-shadow: 0 6px 24px rgba(200, 146, 42, 0.25);
   }
+
+  &:active {
+    transform: scale(0.97);
+    box-shadow: 0 3px 12px rgba(200, 146, 42, 0.3);
+    transition: all 0.1s ease-out;
+  }
+
   @media screen and (max-width: 960px) {
     width: 90%;
-    &:nth-child(2) {
-      margin: 24px 0;
-    }
+    margin: 12px 0;
+
     &:hover {
       transform: none;
     }
@@ -77,6 +83,7 @@ export const PricingCardInfo = styled.div`
   padding: 24px;
   align-items: center;
   color: #111111;
+
   ${PricingCard}:nth-child(2) & {
     color: #ffffff;
   }
@@ -102,6 +109,7 @@ export const PricingCardLength = styled.p`
   font-size: 14px;
   margin-bottom: 24px;
   color: #666666;
+
   ${PricingCard}:nth-child(2) & {
     color: #a9b3c1;
   }
@@ -114,6 +122,7 @@ export const PricingCardFeatures = styled.ul`
   flex-direction: column;
   align-items: center;
   color: #444444;
+
   ${PricingCard}:nth-child(2) & {
     color: #a9b3c1;
   }

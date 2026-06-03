@@ -1,8 +1,41 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
+
+const fadeSlideUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const fadeSlideLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+const fadeSlideRight = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
 
 export const InfoSec = styled.div`
   color: #111111;
-  padding: 160px 0;
+  padding: 80px 0;
   background: ${({ lightBg }) => (lightBg ? '#ffffff' : '#f5f5f5')};
 `;
 
@@ -21,13 +54,30 @@ export const InfoColumn = styled.div`
   flex: 1;
   max-width: 50%;
   flex-basis: 50%;
+  opacity: 0;
+
+  ${({ isVisible, imgStart }) =>
+    isVisible &&
+    css`
+      animation: ${imgStart ? fadeSlideRight : fadeSlideLeft} 0.6s ease-out forwards;
+    `}
+
+  &:last-child {
+    ${({ isVisible, imgStart }) =>
+      isVisible &&
+      css`
+        animation: ${imgStart ? fadeSlideLeft : fadeSlideRight} 0.9s ease-out forwards;
+      `}
+  }
+
   @media (min-width: 480px) and (max-width: 1200px) {
     max-width: 100%;
     flex-basis: 100%;
     display: flex;
     justify-content: center;
   }
-  @media (min-width: 320px) and (max-width: 480px) {
+
+  @media (max-width: 480px) {
     max-width: 100%;
     flex-basis: 100%;
     display: flex;
@@ -40,10 +90,8 @@ export const TextWrapper = styled.div`
   max-width: 540px;
   padding-top: 0;
   padding-bottom: 60px;
-  @media (min-width: 480px) and (max-width: 1200px) {
-    padding-bottom: 65px;
-  }
-  @media (min-width: 320px) and (max-width: 480px) {
+
+  @media (max-width: 1200px) {
     padding-bottom: 65px;
   }
 `;
@@ -55,12 +103,49 @@ export const ImgWrapper = styled.div`
 `;
 
 export const TopLine = styled.div`
-  color: ${({ lightTopLine }) => (lightTopLine ? '#C8922A' : '#C8922A')};
+  color: #C8922A;
   font-size: 18px;
   line-height: 16px;
   font-weight: 700;
   letter-spacing: 1.4px;
   margin-bottom: 16px;
+  opacity: 0;
+
+  ${({ isVisible }) =>
+    isVisible &&
+    css`
+      animation: ${fadeSlideUp} 0.5s ease-out 0.1s forwards;
+    `}
+`;
+
+export const Heading = styled.h1`
+  margin-bottom: 24px;
+  font-size: 48px;
+  line-height: 1.1;
+  font-weight: 600;
+  color: #111111;
+  opacity: 0;
+
+  ${({ isVisible }) =>
+    isVisible &&
+    css`
+      animation: ${fadeSlideUp} 0.6s ease-out 0.2s forwards;
+    `}
+`;
+
+export const Subtitle = styled.p`
+  max-width: 440px;
+  margin-bottom: 35px;
+  font-size: 18px;
+  line-height: 24px;
+  color: #444444;
+  opacity: 0;
+
+  ${({ isVisible }) =>
+    isVisible &&
+    css`
+      animation: ${fadeSlideUp} 0.7s ease-out 0.35s forwards;
+    `}
 `;
 
 export const Img = styled.img`
@@ -70,20 +155,4 @@ export const Img = styled.img`
   vertical-align: middle;
   display: inline-block;
   max-height: 500px;
-`;
-
-export const Heading = styled.h1`
-  margin-bottom: 24px;
-  font-size: 48px;
-  line-height: 1.1;
-  font-weight: 600;
-  color: ${({ lightText }) => (lightText ? '#111111' : '#111111')};
-`;
-
-export const Subtitle = styled.p`
-  max-width: 440px;
-  margin-bottom: 35px;
-  font-size: 18px;
-  line-height: 24px;
-  color: ${({ lightTextDesc }) => (lightTextDesc ? '#444444' : '#444444')};
 `;

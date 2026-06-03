@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { FaTimes, FaBars } from "react-icons/fa";
-import { IconContext } from "react-icons/lib";
-import { Button } from "../../globalStyles";
+import React, { useState, useEffect } from 'react';
+import { FaTimes, FaBars } from 'react-icons/fa';
+import { IconContext } from 'react-icons/lib';
+import { Button } from '../../globalStyles';
 import {
   Nav,
   NavbarContainer,
   NavLogo,
+  NavLogoText,
   HamburgerIcon,
   NavMenu,
   NavItem,
@@ -14,7 +15,7 @@ import {
   NavBtnLink,
   MobileWhatsAppContainer,
   WhatsAppLink,
-} from "./Navbar.elements";
+} from './Navbar.elements';
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -29,11 +30,13 @@ function Navbar() {
     setProductsClick(false);
     setServicesClick(false);
   };
+
   const handleServicesClick = () => {
     setHomeClick(false);
     setProductsClick(false);
     setServicesClick(true);
   };
+
   const handleProductsClick = () => {
     setHomeClick(false);
     setProductsClick(true);
@@ -44,7 +47,6 @@ function Navbar() {
   const closeMobileMenu = () => setClick(false);
 
   const showButton = () => {
-    // Fixed typo: innerWidth must be camelCase
     if (window.innerWidth <= 960) {
       setButton(false);
     } else {
@@ -54,27 +56,27 @@ function Navbar() {
 
   useEffect(() => {
     showButton();
-    window.addEventListener("resize", showButton);
-    return () => window.removeEventListener("resize", showButton);
+    window.addEventListener('resize', showButton);
+    return () => window.removeEventListener('resize', showButton);
   }, []);
 
   return (
     <>
-      <IconContext.Provider value={{ color: "#111" }}>
+      <IconContext.Provider value={{ color: '#111' }}>
         <Nav>
           <NavbarContainer>
             <NavLogo to="/" onClick={closeMobileMenu}>
               <img
-                src={require("../../images/logo.png")}
+                src={require('../../images/logo.png')}
                 alt="All Day Ventures"
-                style={{ height: "60px", marginRight: "0px" ,objectFit:"cover",marginTop:"15px"}}
               />
-              <h5 style={{fontSize:"26px",fontWeight:"bolder"}}> ALL DAY VENTURES</h5>
-             
+              <NavLogoText>ALL DAY VENTURES</NavLogoText>
             </NavLogo>
+
             <HamburgerIcon onClick={handleClick}>
               {click ? <FaTimes /> : <FaBars />}
             </HamburgerIcon>
+
             <NavMenu onClick={handleClick} click={click}>
               <NavItem onClick={handleHomeClick} homeClick={homeClick}>
                 <NavLinks to="/" onClick={closeMobileMenu}>
@@ -82,19 +84,13 @@ function Navbar() {
                 </NavLinks>
               </NavItem>
 
-              <NavItem
-                onClick={handleServicesClick}
-                servicesClick={servicesClick}
-              >
+              <NavItem onClick={handleServicesClick} servicesClick={servicesClick}>
                 <NavLinks to="/services" onClick={closeMobileMenu}>
                   Services
                 </NavLinks>
               </NavItem>
 
-              <NavItem
-                onClick={handleProductsClick}
-                productsClick={productsClick}
-              >
+              <NavItem onClick={handleProductsClick} productsClick={productsClick}>
                 <NavLinks to="/products" onClick={closeMobileMenu}>
                   Products
                 </NavLinks>
@@ -114,7 +110,6 @@ function Navbar() {
                 )}
               </NavItemBtn>
 
-              {/* WHATSAPP SECTION - Fully Centered on Mobile, Hidden on Desktop */}
               <MobileWhatsAppContainer>
                 <WhatsAppLink
                   href="https://wa.me/233205601679"
@@ -123,7 +118,7 @@ function Navbar() {
                   onClick={closeMobileMenu}
                 >
                   <img
-                    src={require("../../images/whtsap.png")}
+                    src={require('../../images/whtsap.png')}
                     alt="WhatsApp"
                   />
                   +233 20 560 1679
