@@ -1,8 +1,8 @@
-import React from 'react';
-import styled, { keyframes, css } from 'styled-components';
-import { FaHome } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import useScrollAnimation from '../../hooks/useScrollAnimation';
+import React from "react";
+import styled, { keyframes, css } from "styled-components";
+import { FaHome } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import useScrollAnimation from "../../hooks/useScrollAnimation";
 
 const fadeUp = keyframes`
   from { opacity: 0; transform: translateY(40px); }
@@ -46,7 +46,11 @@ const HeroImg = styled.img`
 const HeroOverlay = styled.div`
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.55));
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.55)
+  );
   z-index: 1;
 `;
 
@@ -63,7 +67,9 @@ const HeroText = styled.div`
   }
   @media (max-width: 768px) {
     padding: 2rem 1.5rem 0;
-    h1 { font-size: 36px; }
+    h1 {
+      font-size: 36px;
+    }
   }
 `;
 
@@ -76,8 +82,16 @@ const Breadcrumb = styled.div`
   align-items: center;
   font-size: 14px;
   color: #ccc;
-  a { color: #ccc; text-decoration: none; &:hover { text-decoration: underline; } }
-  span { color: #fff; }
+  a {
+    color: #ccc;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  span {
+    color: #fff;
+  }
 `;
 
 const HeroSpacer = styled.div`
@@ -92,7 +106,7 @@ const ContentWrapper = styled.div`
 
 const Section = styled.div`
   padding: 80px 4rem;
-  background: ${({ dark }) => (dark ? '#f5f5f5' : '#ffffff')};
+  background: ${({ dark }) => (dark ? "#f5f5f5" : "#ffffff")};
   @media (max-width: 768px) {
     padding: 60px 1.5rem;
   }
@@ -113,14 +127,24 @@ const PortfolioHeading = styled.h2`
       animation: ${fadeUp} 0.5s ease-out forwards;
     `}
 
-  @media (max-width: 768px) { font-size: 28px; }
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
 `;
 
 const PortfolioGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 32px;
-  @media (max-width: 768px) { grid-template-columns: 1fr; }
+  align-items: stretch;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const ProjectImageBox = styled.div`
@@ -138,9 +162,12 @@ const ProjectImageBox = styled.div`
 `;
 
 const ClickHint = styled.span`
+  margin-top: auto;
+  padding-top: 12px;
+
   font-size: 13px;
   font-weight: 600;
-  color: #C8922A;
+  color: #c8922a;
   letter-spacing: 0.8px;
   text-transform: uppercase;
   display: flex;
@@ -149,9 +176,8 @@ const ClickHint = styled.span`
   transition: gap 0.3s ease, opacity 0.3s ease;
 
   &::after {
-    content: '→';
+    content: "→";
     font-size: 14px;
-    display: inline-block;
     transition: transform 0.3s ease;
   }
 
@@ -164,6 +190,7 @@ const ProjectTextBox = styled.div`
   padding: 1.25rem 1.25rem 1.5rem;
   display: flex;
   flex-direction: column;
+  flex: 1;               /* Fill remaining height */
   gap: 8px;
   background: #ffffff;
   border: 1px solid #e0e0e0;
@@ -182,9 +209,9 @@ const ProjectTitle = styled.h3`
   justify-content: space-between;
 
   &::after {
-    content: '→';
+    content: "→";
     font-size: 18px;
-    color: #C8922A;
+    color: #c8922a;
     transition: transform 0.3s ease;
     display: inline-block;
     flex-shrink: 0;
@@ -202,6 +229,8 @@ const ProjectDesc = styled.p`
 const ProjectThumb = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100%;
+  width: 100%;
   cursor: pointer;
   opacity: 0;
   border-radius: 4px;
@@ -210,8 +239,8 @@ const ProjectThumb = styled.div`
   ${({ isVisible, side, delay }) =>
     isVisible &&
     css`
-      animation: ${side === 'left' ? fadeLeft : fadeRight}
-        0.7s ease-out ${delay || '0s'} forwards;
+      animation: ${side === "left" ? fadeLeft : fadeRight} 0.7s ease-out
+        ${delay || "0s"} forwards;
     `}
 
   &:hover ${ProjectImageBox} img {
@@ -232,12 +261,12 @@ const ProjectThumb = styled.div`
   }
 
   &:hover ${ProjectTextBox} {
-    border-color: #C8922A;
+    border-color: #c8922a;
   }
 
   &:active ${ProjectTextBox} {
     background: #fffaf3;
-    border-color: #C8922A;
+    border-color: #c8922a;
   }
 
   @media (max-width: 960px) {
@@ -249,7 +278,7 @@ const ProjectThumb = styled.div`
 
     &:active ${ProjectTextBox} {
       background: #fffaf3;
-      border-color: #C8922A;
+      border-color: #c8922a;
     }
   }
 `;
@@ -266,7 +295,10 @@ const Infrastructure = () => {
   return (
     <PageWrapper>
       <HeroSection>
-        <HeroImg src={require('../../images/page_16.jpg')} alt="Infrastructure" />
+        <HeroImg
+          src={require("../../images/page_16.jpg")}
+          alt="Infrastructure"
+        />
         <HeroOverlay />
         <HeroText>
           <h1>Infrastructure</h1>
@@ -285,17 +317,28 @@ const Infrastructure = () => {
           </PortfolioHeading>
 
           <PortfolioGrid>
-            <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/infrastructure/gaf">
+            <Link
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                display: "flex",
+                height: "100%",
+              }}
+              to="/infrastructure/gaf"
+            >
               <ProjectThumb isVisible={sectionVisible} side="left" delay="0.2s">
                 <ProjectImageBox>
-                  <img src={require('../../images/page_1.jpg')} alt="GAF Special Needs Center" />
+                  <img
+                    src={require("../../images/page_1.jpg")}
+                    alt="GAF Special Needs Center"
+                  />
                 </ProjectImageBox>
                 <ProjectTextBox>
                   <ProjectTitle>GAF Special Needs Center</ProjectTitle>
                   <ProjectDesc>
-                    Delivering a 42-classroom special needs school at Burma Camp for
-                    the Ghana Armed Forces — education, therapy, and sensory spaces
-                    across 10,000+ sqm.
+                    Delivering a 42-classroom special needs school at Burma Camp
+                    for the Ghana Armed Forces — education, therapy, and sensory
+                    spaces across 10,000+ sqm.
                   </ProjectDesc>
                   <ClickHint>View Project</ClickHint>
                 </ProjectTextBox>
@@ -304,12 +347,15 @@ const Infrastructure = () => {
 
             <ProjectThumb isVisible={sectionVisible} side="right" delay="0.4s">
               <ProjectImageBox>
-                <img src={require('../../images/infrastructure1.jpeg')} alt="Industrial Development" />
+                <img
+                  src={require("../../images/infrastructure1.jpeg")}
+                  alt="Industrial Development"
+                />
               </ProjectImageBox>
               <ProjectTextBox>
-                <ProjectTitle style={{ cursor: 'default' }}>
+                <ProjectTitle style={{ cursor: "default" }}>
                   Industrial development
-                  <span style={{ opacity: 0, pointerEvents: 'none' }}>→</span>
+                  <span style={{ opacity: 0, pointerEvents: "none" }}>→</span>
                 </ProjectTitle>
                 <ProjectDesc>
                   Construction and logistics infrastructure designed to enable
@@ -317,6 +363,40 @@ const Infrastructure = () => {
                 </ProjectDesc>
               </ProjectTextBox>
             </ProjectThumb>
+
+            <Link
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                display: "flex",
+                height: "100%",
+              }}
+              to="/infrastructure/railway-project"
+            >
+              <ProjectThumb isVisible={sectionVisible} side="left" delay="0.6s">
+                <ProjectImageBox>
+                  <img
+                    src={require("../../images/railway-cover.png")}
+                    alt="Ghana Integrated Railway & New Town Development Project"
+                  />
+                </ProjectImageBox>
+
+                <ProjectTextBox>
+                  <ProjectTitle>
+                    Ghana Integrated Railway & New Town Development
+                  </ProjectTitle>
+
+                  <ProjectDesc>
+                    A national railway and transit-oriented development
+                    initiative connecting major economic corridors while
+                    creating new towns, logistics hubs, and sustainable urban
+                    communities across Ghana.
+                  </ProjectDesc>
+
+                  <ClickHint>View Project</ClickHint>
+                </ProjectTextBox>
+              </ProjectThumb>
+            </Link>
           </PortfolioGrid>
         </Section>
 

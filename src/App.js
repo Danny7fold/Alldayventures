@@ -9,6 +9,7 @@ import SignUp from './pages/SignUp/SignUp';
 import ScrollToTop from './components/ScrollToTop';
 import Infrastructure from './components/Infrastructure/infrastructure';
 import GAFProject from './components/Infrastructure/GAFProject';
+import RailwayProject from './components/Infrastructure/RailwayProject';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path='/products' component={Products} />
              <Route exact path='/infrastructure' component={Infrastructure} />
              <Route path='/infrastructure/gaf' component={GAFProject} />
+            <Route path="/infrastructure/railway-project" component={RailwayProject} />
             <Route path='/sign-up' component={SignUp} />
           </Switch>
           <Footer />
