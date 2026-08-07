@@ -68,9 +68,9 @@ function Navbar() {
             <NavLogo to="/" onClick={closeMobileMenu}>
               <img
                 src={require('../../images/logo.png')}
-                alt="All Day Ventures"
+                alt="All Day CO.Ltd"
               />
-              <NavLogoText>ALL DAY VENTURES</NavLogoText>
+              <NavLogoText>ALL DAY COMPANY Ltd.</NavLogoText>
             </NavLogo>
 
             <HamburgerIcon onClick={handleClick}>

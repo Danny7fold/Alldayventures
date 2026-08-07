@@ -86,16 +86,16 @@ function Footer() {
         <SocialMediaWrap>
           <SocialLogo to='/'>
             <SocialIcon />
-           ALL DAY VENTURES 
+           ALL DAY COMPANY.Ltd
           </SocialLogo>
-          <WebsiteRights>ALL DAY VENTURES © {date.getFullYear()} </WebsiteRights>
+          <WebsiteRights>ALL DAY CO.Ltd © {date.getFullYear()} </WebsiteRights>
           <SocialIcons>
   <SocialIconLink href='https://www.facebook.com/' target='_blank' aria-label='Facebook'>
     <FaFacebook />
   </SocialIconLink>
-  <SocialIconLink href='https://www.instagram.com/' target='_blank' aria-label='Instagram'>
-    <FaInstagram />
-  </SocialIconLink>
+  <SocialIconLink href='https://www.instagram.com/alldayco.ltd?igsh=MXJlMWN0ejB5c3Blcg%3D%3D&utm_source=qr' target='_blank' aria-label='Instagram'>
+  <FaInstagram />
+</SocialIconLink>
   <SocialIconLink href='https://www.youtube.com/' target='_blank' aria-label='YouTube'>
     <FaYoutube />
   </SocialIconLink>
